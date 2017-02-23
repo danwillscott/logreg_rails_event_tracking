@@ -1,0 +1,158 @@
+<nav>
+  <div class="nav-wrapper">
+    <a class="brand-logo center"><%= @titlebar %></a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <!--This is the register form and card-->
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title center">Register</span>
+          <div class="row">
+            <!--This is the registration card-->
+            <form class="col s12" method="post" action="/register_user">
+              <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="first_name" name="first_name" type="text" class="validate">
+                  <label for="first_name">First Name</label>
+                  <%	 if flash[:first_name] %>
+                      <a class="yellow-text">Last Name <%=  flash[:first_name] %></a>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="last_name" name="last_name" type="text" class="validate">
+                  <label for="last_name">Last Name</label>
+                  <%	 if flash[:last_name] %>
+                      <a class="yellow-text">Last Name <%=  flash[:last_name] %></a>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" name="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                  <%	 if flash[:email] %>
+                      <a class="yellow-text">Email <%=  flash[:email] %></a>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input name="password" id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                  <%	 if flash[:password] %>
+                      <a class="yellow-text">Password <%=  flash[:password] %></a>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="password_confirmation" name="password_confirmation" type="password" class="validate">
+                  <label for="password_confirmation">Confirm Password</label>
+                  <%	 if flash[:password_confirmation] %>
+                      <a class="yellow-text">Confirm Password <%=  flash[:password_confirmation].capitalize! %></a>
+                  <% else %>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="location" name="location" type="text" class="validate">
+                  <label for="location">Your Location</label>
+                  <%	 if flash[:location] %>
+                      <a class="yellow-text">Location <%=  flash[:location].capitalize! %></a>
+                  <% else %>
+                  <%	 end %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select id="state" class="state" name="state">
+                    <option value="" disabled selected>Select</option>
+                    <option value="CA">CA</option>
+                    <option value="AK">AK</option>
+                    <option value="CO">CO</option>
+                    <option value="WA">WA</option>
+                  </select>
+                  <label for="state">Choose Your State</label>
+                  <%	 if flash[:state] %>
+                      <a class="yellow-text">State <%=  flash[:state].capitalize! %></a>
+                  <% else %>
+                  <%	 end %>
+                </div>
+              </div>
+
+              <!--<div class="row">-->
+              <!--<div class="col s12">-->
+              <!--<label for="birthdate" class="">Birthdate</label>-->
+              <!--<input type="date" class="datepicker">-->
+              <!--<label></label>-->
+              <!--<i class="material-icons right">data</i>-->
+              <!--</div>-->
+              <!--</div>-->
+              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i class="material-icons right">send</i>
+              </button>
+              <button class="btn waves-effect waves-light right red" type="reset" name="action">Reset
+                <i class="material-icons right">cached</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of register form and card-->
+
+    <!--This is the login form and card-->
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title center">Login</span>
+          <div class="row">
+            <%	if flash[:login]  %>
+                <a class="yellow-text"><%= flash[:login][1] %></a>
+            <%  end %>
+            <form class="col s12" method="post" action="/login_user">
+              <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" name="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input name="password" id="password" type="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit" name="action">Login
+                <i class="material-icons right">send</i>
+              </button>
+              <button class="btn waves-effect waves-light right red" type="reset" name="action">Reset
+                <i class="material-icons right">cached</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+</script>

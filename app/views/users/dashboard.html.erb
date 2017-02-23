@@ -1,0 +1,86 @@
+<nav>
+  <div class="nav-wrapper">
+    <a class="brand-logo center hide-on-small-only"><%= @titlebar %></a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="/logout">Log Out</a></li>
+      <li><a href="/edit">Edit <%=	 session[:first_name] %> </a></li>
+    </ul>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="#">Option 1</a></li>
+      <li><a href="#">Option 2</a></li>
+      <li><a href="#">Option 3</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+
+
+  <div class="row">
+    <div class="col">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title center">Event's Close to you</span>
+          <table>
+            <thead>
+            <tr>
+              <th data-field="name">Name</th>
+              <th data-field="date">Date</th>
+              <th data-field="location">Location</th>
+              <th data-field="state">State</th>
+              <th data-field="host">Host</th>
+              <th data-field="join">Join</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>FAKE</td>
+              <td>November 20 1914</td>
+              <td>$0.87</td>
+              <td>CA</td>
+              <td>Dan</td>
+              <td>
+                <a class="btn-floating btn red" href="#">
+                  <i class="material-icons">library_add</i>
+                </a>
+              </td>
+            </tr>
+            <%	@my_events.each do |event| %>
+            <tr>
+              <td>FAKE</td>
+              <td>November 20 1914</td>
+              <td>$0.87</td>
+              <td>CA</td>
+              <td>Dan</td>
+              <td>
+                <a class="btn-floating btn red" href="#">
+                  <i class="material-icons">library_add</i>
+                </a>
+              </td>
+            </tr>
+            <%	 end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-action">
+          <a href=""></a>
+          <a href=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <%=	 session[:first_name] %>
+  <%=	 session[:last_name] %>
+  <%=	 session[:email] %>
+  <%=	 session[:id] %>
+
+</div>
+
+
+
+<script>
+    $(".dropdown-button").dropdown();
+</script>
